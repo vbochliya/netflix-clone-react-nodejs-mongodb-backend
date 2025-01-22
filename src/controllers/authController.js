@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 const signup = async (req, res) => {
   try {
     console.log("req.body.........", req.body);
-    const { username, email, password } = req.body;
-    const newUser = new User({ username, email, password });
+    const { name, gender, dob, username, email, password } = req.body;
+    const newUser = new User({ name, gender, dob, username, email, password  });
     await newUser.save();
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
