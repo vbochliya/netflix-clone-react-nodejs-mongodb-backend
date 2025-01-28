@@ -2,28 +2,27 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true},
-  gender: { type: String, required: true},
-  dob: { type: String, required: true},
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    subscription: {
+        plan: { type: String, enum: ['free', 'basic', 'premium'], default: 'free' },
+        startDate: { type: Date },
+        endDate: { type: Date },
+    },
+    watchlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
+    likedMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
 });
 
 userSchema.pre("save", async function (next) {
+  console.log("isModified............", this.isModified("password"));
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
-module.exports = mongoose.model("User", userSchema);
 
-// http://localhost:8000/api/auth/signup
-// {
-//   "name":"vikash",
-//   "username":"vbo",
-//   "dob":"07-10-2000",
-//   "gender":"male",
-//   "email":"vbochliya1@gmail.com",
-//   "password":"123"
-// }
+module.exports = mongoose.model('User', userSchema);

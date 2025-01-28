@@ -1,0 +1,149 @@
+1. Movie Management:
+
+    Add a New Movie:
+        Route: POST /movies
+        Description: Allows administrators to add a new movie to the database.
+        Access: Admin only.
+
+    Update Movie Details:
+        Route: PUT /movies/:id
+        Description: Enables updating details of an existing movie.
+        Access: Admin only.
+
+    Delete a Movie:
+        Route: DELETE /movies/:id
+        Description: Removes a movie from the database.
+        Access: Admin only.
+
+2. User Watchlist Management:
+
+    Add to Watchlist:
+        Route: POST /users/:userId/watchlist
+        Description: Adds a movie to a user's watchlist.
+        Access: Authenticated users.
+
+    Remove from Watchlist:
+        Route: DELETE /users/:userId/watchlist/:movieId
+        Description: Removes a movie from a user's watchlist.
+        Access: Authenticated users.
+
+    View Watchlist:
+        Route: GET /users/:userId/watchlist
+        Description: Retrieves the list of movies in a user's watchlist.
+        Access: Authenticated users.
+
+3. Movie Reviews and Ratings:
+
+    Add a Review:
+        Route: POST /movies/:movieId/reviews
+        Description: Allows users to add a review and rating for a movie.
+        Access: Authenticated users.
+
+    Update a Review:
+        Route: PUT /movies/:movieId/reviews/:reviewId
+        Description: Enables users to update their review.
+        Access: Authenticated users.
+
+    Delete a Review:
+        Route: DELETE /movies/:movieId/reviews/:reviewId
+        Description: Allows users to delete their review.
+        Access: Authenticated users.
+
+    Get Reviews for a Movie:
+        Route: GET /movies/:movieId/reviews
+        Description: Retrieves all reviews for a specific movie.
+        Access: Public.
+
+4. User Profile Management:
+
+    View User Profile:
+        Route: GET /users/:userId
+        Description: Retrieves a user's profile information.
+        Access: Authenticated users.
+
+    Update User Profile:
+        Route: PUT /users/:userId
+        Description: Allows users to update their profile details.
+        Access: Authenticated users.
+
+5. Subscription Management:
+
+    Subscribe to a Plan:
+        Route: POST /users/:userId/subscribe
+        Description: Allows users to subscribe to a plan.
+        Access: Authenticated users.
+
+    Unsubscribe from a Plan:
+        Route: POST /users/:userId/unsubscribe
+        Description: Allows users to unsubscribe from their current plan.
+        Access: Authenticated users.
+
+    View Subscription Details:
+        Route: GET /users/:userId/subscription
+        Description: Retrieves the user's current subscription details.
+        Access: Authenticated users.
+
+6. Search Functionality:
+
+    Search Movies:
+        Route: GET /search/movies
+        Description: Allows users to search for movies based on various criteria.
+        Access: Public.
+
+    Search Actors/Directors:
+        Route: GET /search/people
+        Description: Enables users to search for actors or directors.
+        Access: Public.
+
+7. Actor and Director Management:
+
+    Add a New Actor/Director:
+        Route: POST /people
+        Description: Allows administrators to add a new actor or director to the database.
+        Access: Admin only.
+
+    Update Actor/Director Details:
+        Route: PUT /people/:id
+        Description: Enables updating details of an existing actor or director.
+        Access: Admin only.
+
+    Delete an Actor/Director:
+        Route: DELETE /people/:id
+        Description: Removes an actor or director from the database.
+        Access: Admin only.
+
+8. Genre Management:
+
+    Add a New Genre:
+        Route: POST /genres
+        Description: Allows administrators to add a new genre to the database.
+        Access: Admin only.
+
+    Delete a Genre:
+        Route: DELETE /genres/:id
+        Description: Removes a genre from the database.
+        Access: Admin only.
+
+9. Advanced Video Playback Options:
+
+    Set Video Resolution:
+        Route: POST /movies/:movieId/set-resolution
+        Description: Allows users to set their preferred video resolution.
+        Access: Authenticated users.
+
+    Set Playback Speed:
+        Route: POST /movies/:movieId/set-playback-speed
+        Description: Enables users to set their preferred playback speed.
+        Access: Authenticated users.
+
+10. Autocomplete and Fuzzy Search:
+
+    Autocomplete Search:
+        Route: GET /search/autocomplete
+        Description: Provides autocomplete suggestions as users type their queries.
+        Access: Public.
+
+    Fuzzy Search:
+        Route: GET /search/fuzzy
+        Description: Returns search results even when there are minor typos or misspellings in the query.
+        Access: Public.
