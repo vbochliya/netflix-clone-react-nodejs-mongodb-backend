@@ -98,3 +98,7 @@ typings/
 
 # Windows files
 Thumbs.db
+
+# media
+videos/
+thumbnails/

@@ -3,7 +3,7 @@ const router = express.Router();
 const Movie = require("../../models/movie");
 
 // GET /movie/:id
-// Fetch a movie by its ID, optionally populate directors and actors
+// Fetch a movie by its ID, populate directors and actors
 router.get("/:id", async (req, res) => {
   if (req.params.id) {
     try {

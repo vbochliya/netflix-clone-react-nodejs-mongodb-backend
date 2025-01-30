@@ -7,9 +7,9 @@ const Movie = require("../../models/movie");
 
 // GET /getmoviepacket/:id/:packetNumber
 // Streams the requested video file located in /videos/<id>/<packetNumber>.mp4
-router.get("/:id/:packetNumber", async (req, res) => {
+router.get("/:id/:resolution/:packetNumber", async (req, res) => {
   try {
-    const { id, packetNumber } = req.params;
+    const { id,resolution, packetNumber } = req.params;
 
     // 1. Verify that the Movie exists (optional check, but recommended).
     const movie = await Movie.findById(id);
@@ -25,6 +25,7 @@ router.get("/:id/:packetNumber", async (req, res) => {
       "..",
       "videos",
       id,
+      resolution,
       `${packetNumber}.mp4`
     );
 

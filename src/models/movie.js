@@ -9,11 +9,11 @@ const movieSchema = new mongoose.Schema({
     releaseDate: { type: Date },
     duration: { type: Number }, // in minutes
     rating: { type: Number, min: 0, max: 10 },
-    videoUrl: { 
+    videoResolutionUrls: { 
         type: Map,
         of: String
     },
-    thumbnailUrl: { type: String },
+    thumbnailId: { type: String },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });
