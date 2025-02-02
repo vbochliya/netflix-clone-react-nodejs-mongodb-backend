@@ -23,11 +23,23 @@ router.post("/", async (req, res) => {
     }
 
     // 2) Create a new review
+
     const newReview = new Review({
       user: userId,
       movie: movieId,
-      rating,
-      comment
+      rating:{
+        type: Number,
+        required: true,
+        min: [1, "Rating must be at least 1"],
+        max: [5, "Rating must be at most 5"],
+      },
+      comment: {
+        type: String,
+        required: true,
+        trim: true,
+        min: [8, "Comment must be at least 8 character"],
+        max: [500, "Comment must be at most 500 character"],
+      },
     });
 
     await newReview.save();
