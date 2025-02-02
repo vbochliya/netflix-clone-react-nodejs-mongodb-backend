@@ -24,7 +24,8 @@ app.use(express.json());
 
 // Setup routes
 app.use("/api/auth", authRoutes);
-app.use("/api/users", authenticate, usersRoutes);
+app.use("/api/users", usersRoutes);//testing
+// app.use("/api/users", authenticate, usersRoutes);
 app.use("/api/admin", adminAuthenticate, adminRoutes);
 
 // Listen

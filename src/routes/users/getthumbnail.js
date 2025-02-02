@@ -13,7 +13,7 @@ router.get("/:thumbnailId", (req, res) => {
     "..",
     "..",
     "thumbnails",
-    thumbnailId
+    thumbnailId+".jpeg"
   );
 
   // Check if the file exists

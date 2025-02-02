@@ -11,11 +11,11 @@ router.get("/:id/:resolution/:packetNumber", async (req, res) => {
   try {
     const { id,resolution, packetNumber } = req.params;
 
-    // 1. Verify that the Movie exists (optional check, but recommended).
-    const movie = await Movie.findById(id);
-    if (!movie) {
-      return res.status(404).json({ message: "Movie not found" });
-    }
+    // 1. Verify that the Movie exists .
+    // const movie = await Movie.findById(id);
+    // if (!movie) {
+    //   return res.status(404).json({ message: "Movie not found" });
+    // }
 
     // 2. Build the full path to the requested video file in your local file system.
     const videoPath = path.join(
@@ -28,7 +28,7 @@ router.get("/:id/:resolution/:packetNumber", async (req, res) => {
       resolution,
       `${packetNumber}.mp4`
     );
-
+    console.log(videoPath)
     // 3. Check if the file actually exists
     if (!fs.existsSync(videoPath)) {
       return res.status(404).json({ message: "Video file not found" });
