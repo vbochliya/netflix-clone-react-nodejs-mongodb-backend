@@ -80,7 +80,20 @@ router.put("/:reviewId", async (req, res) => {
 
     const updatedReview = await Review.findByIdAndUpdate(
       reviewId,
-      { rating, comment, updatedAt: Date.now() },
+      { rating:{
+        type: Number,
+        required: true,
+        min: [1, "Rating must be at least 1"],
+        max: [5, "Rating must be at most 5"],
+      },
+      comment: {
+        type: String,
+        required: true,
+        trim: true,
+        min: [8, "Comment must be at least 8 character"],
+        max: [500, "Comment must be at most 500 character"],
+      },
+      updatedAt: Date.now() },
       { new: true }
     );
 
